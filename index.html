@@ -1,23 +1,202 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dohan | Railway Infrastructure Expert</title>
     <style>
+        /* 1. 전체 디자인 설정 (스타일) */
         body {
-            background-color: #f0f4f8; /* 아주 연한 회색 배경 */
-            text-align: center;        /* 글자 가운데 정렬 */
-            font-family: 'Malgun Gothic', sans-serif; /* 깔끔한 폰트 */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
         }
-        h1 {
-            color: #003366;            /* 신뢰감을 주는 짙은 남색 (현대엔지니어링 느낌) */
-            margin-top: 100px;
+        
+        /* 헤더 (맨 위 제목) */
+        header {
+            background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.9)), url('https://images.unsplash.com/photo-1474487548417-781cb714c223?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); /* 배경 이미지 (철도 느낌) */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+        header p {
+            font-size: 1.2em;
+            color: #ccc;
+            margin-top: 10px;
+        }
+
+        /* 공통 섹션 스타일 */
+        section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+        h2 {
+            color: #003366; /* 신뢰감 주는 네이비 색상 */
+            border-bottom: 2px solid #003366;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        /* 3. 주요 이력 (타임라인 스타일) */
+        .resume-item {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 4px solid #003366;
+        }
+        .resume-item h3 {
+            margin: 0;
+            font-size: 1.4em;
+        }
+        .resume-item span {
+            color: #666;
+            font-size: 0.9em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* 4. 프로젝트 카드 스타일 */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .project-card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #fff;
+            transition: transform 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-5px); /* 마우스 올리면 살짝 뜸 */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .badge {
+            background-color: #003366;
+            color: white;
+            padding: 3px 8px;
+            font-size: 0.8em;
+            border-radius: 3px;
+            margin-right: 5px;
+        }
+
+        /* 연락처 및 하단 */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background-color: #333;
+            color: white;
+        }
+        .contact-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: white;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to Dhrailway</h1>
-    <p>This is Dh's railway and infrastructure portfolio site.</p>
+
+    <header>
+        <h1>DOHAN (Jake) KIM</h1>
+        <p>Civil Engineer | Railway & Infrastructure Specialist (20+ Years)</p>
+    </header>
+
+    <section>
+        <h2>Professional Summary</h2>
+        <p>
+            반갑습니다. 20년 이상 철도 및 인프라 프로젝트 현장에서 발로 뛰어온 토목 엔지니어 김도한입니다. 
+            현재 <b>Hyundai Engineering</b> 소속으로 파나마 메트로 3호선 프로젝트의 <b>Power of Attorney (PoA)</b> 역할을 수행하고 있습니다.
+        </p>
+        <p>
+            복잡한 도심지 철도 건설부터 대규모 인프라 구축까지, 기술적 난제를 해결하고 프로젝트를 성공적으로 이끄는 것을 전문으로 합니다.
+        </p>
+    </section>
+
+    <section>
+        <h2>Technical Expertise</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <span class="badge">Railway Engineering</span>
+            <span class="badge">EPC Project Management</span>
+            <span class="badge">Metro System Construction</span>
+            <span class="badge">Infrastructure Design</span>
+            <span class="badge">Contract Management (FIDIC)</span>
+            <span class="badge">Risk Analysis</span>
+        </div>
+    </section>
+
+    <section style="border-left: 5px solid #d9534f;"> <h2>🚀 Current Project</h2>
+        <div class="resume-item" style="border: none;">
+            <h3>Panama Metro Line 3 Project</h3>
+            <span>2021 - Present | Panama City, Panama</span>
+            <p>
+                <b>Role:</b> Power of Attorney (PoA) & Senior Civil Engineer<br>
+                <b>Description:</b> 파나마 운하를 횡단하는 총 연장 25km의 모노레일 시스템 건설 프로젝트입니다. 
+                설계 및 시공 일괄(Design-Build) 방식으로 진행되며, 고난이도 터널링 기술과 교량 공법이 적용된 국가적 랜드마크 사업입니다.
+            </p>
+            <ul>
+                <li>프로젝트 전체 기술 관리 및 의사결정 지원</li>
+                <li>현지 정부 및 발주처와의 주요 협상 및 계약 관리</li>
+                <li>터널 및 고가 구조물 시공 기술 자문</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Key Project History</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>South Korea High-Speed Rail (Example)</h3>
+                <span>2015 - 2020 | Project Manager</span>
+                <p>국내 고속철도 노선 확장 공사 참여. 터널 굴착 및 연약지반 처리 공법 적용.</p>
+            </div>
+            <div class="project-card">
+                <h3>Overseas Infrastructure (Example)</h3>
+                <span>2010 - 2015 | Senior Engineer</span>
+                <p>해외 도로 및 교량 건설 프로젝트. 다국적 팀과의 협업 및 공정 관리 수행.</p>
+            </div>
+            <div class="project-card">
+                <h3>Subway Line Extension</h3>
+                <span>2005 - 2010 | Site Engineer</span>
+                <p>도심지 지하철 연장 구간 시공 담당. 쉴드 TBM 공법 적용 구간 관리.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        <div class="resume-item">
+            <h3>Chung-Ang University (중앙대학교)</h3>
+            <span>Bachelor of Science in Civil Engineering</span>
+        </div>
+    </section>
+
+    <footer>
+        <h3>Let's Build the Future Together</h3>
+        <p>철도 및 인프라 관련 기술 자문이나 협업 제안은 언제든 환영합니다.</p>
+        <a href="mailto:jakekim77385@gmail.com" class="contact-btn">Email Me</a>
+        <br><br>
+        <small>&copy; 2026 Dohan Kim. All rights reserved.</small>
+    </footer>
+
 </body>
 </html>
