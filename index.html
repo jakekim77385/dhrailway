@@ -3,201 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dohan | Railway Infrastructure Expert</title>
+    <title>Dohan Kim | Railway Expert</title>
     <style>
-        /* Global Styles */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
-        }
+        /* 기본 설정 */
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f4f4f4; color: #333; }
+        a { text-decoration: none; color: inherit; }
         
-        /* Header Section */
-        header {
-            background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.9)), url('https://images.unsplash.com/photo-1474487548417-781cb714c223?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        /* 상단 메뉴바 (네비게이션) */
+        nav {
+            background-color: #003366; /* 신뢰의 네이비색 */
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-size: 1.5em; font-weight: bold; letter-spacing: 1px; }
+        .menu { display: flex; gap: 20px; }
+        .menu a { color: #ccc; transition: 0.3s; font-size: 0.9em; }
+        .menu a:hover { color: white; }
+
+        /* 메인 히어로 섹션 (배경 이미지) */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1474487548417-781cb714c223?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
             background-size: cover;
             background-position: center;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             color: white;
-            padding: 100px 20px;
             text-align: center;
         }
-        header h1 {
-            font-size: 3em;
-            margin: 0;
-            letter-spacing: 2px;
-        }
-        header p {
-            font-size: 1.2em;
-            color: #ccc;
-            margin-top: 10px;
-        }
+        .hero h1 { font-size: 3em; margin: 0; }
+        .hero p { font-size: 1.2em; margin-top: 10px; color: #ddd; }
 
-        /* Section Styles */
-        section {
-            padding: 60px 20px;
-            max-width: 1000px;
-            margin: 0 auto;
+        /* 카테고리 그리드 (메뉴 박스들) */
+        .container { max-width: 1100px; margin: 50px auto; padding: 0 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .card {
             background: white;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            border-radius: 8px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            border-top: 5px solid #003366;
         }
-        h2 {
-            color: #003366;
-            border-bottom: 2px solid #003366;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-        }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .card h3 { color: #003366; margin-top: 0; font-size: 1.5em; }
+        .card p { color: #666; font-size: 0.95em; }
+        .card .icon { font-size: 2em; margin-bottom: 15px; display: block; }
 
-        /* Resume Item Styles */
-        .resume-item {
-            margin-bottom: 25px;
-            padding-left: 20px;
-            border-left: 4px solid #003366;
-        }
-        .resume-item h3 {
-            margin: 0;
-            font-size: 1.4em;
-        }
-        .resume-item span {
-            color: #666;
-            font-size: 0.9em;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        /* Project Grid Styles */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .project-card {
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 5px;
-            background-color: #fff;
-            transition: transform 0.3s;
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .badge {
-            background-color: #003366;
-            color: white;
-            padding: 3px 8px;
-            font-size: 0.8em;
-            border-radius: 3px;
-            margin-right: 5px;
-        }
-
-        /* Footer Styles */
-        footer {
-            text-align: center;
-            padding: 40px;
-            background-color: #333;
-            color: white;
-        }
-        .contact-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: white;
-            color: #333;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-        }
+        footer { text-align: center; padding: 20px; color: #777; font-size: 0.8em; margin-top: 50px; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>DOHAN (Jake) KIM</h1>
-        <p>Civil Engineer | Railway & Infrastructure Specialist (20+ Years)</p>
-    </header>
-
-    <section>
-        <h2>Professional Summary</h2>
-        <p>
-            Highly experienced Civil Engineer with over 20 years of expertise in railway and large-scale infrastructure projects. 
-            Currently serving as the **Power of Attorney (PoA)** for the Panama Metro Line 3 Project at **Hyundai Engineering**.
-        </p>
-        <p>
-            Proven track record in managing complex urban railway constructions, resolving technical challenges in tunneling and bridge structures, 
-            and leading cross-functional teams to successful project delivery.
-        </p>
-    </section>
-
-    <section>
-        <h2>Technical Expertise</h2>
-        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-            <span class="badge">Railway Engineering</span>
-            <span class="badge">EPC Project Management</span>
-            <span class="badge">Metro System Construction</span>
-            <span class="badge">Infrastructure Design</span>
-            <span class="badge">FIDIC Contracts</span>
-            <span class="badge">Risk Management</span>
+    <nav>
+        <div class="logo">DOHAN KIM</div>
+        <div class="menu">
+            <a href="about.html" style="color:white; font-weight:bold;">About Me</a>
+            <a href="#">Projects</a>
+            <a href="#">Contracts</a>
+            <a href="#">Cost & Est.</a>
+            <a href="#">Risk Mgmt</a>
+            <a href="#">US Market</a>
         </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Building the Future of Railway</h1>
+        <p>Expertise in EPC, International Contracts, and Infrastructure Management</p>
     </section>
 
-    <section style="border-left: 5px solid #d9534f;">
-        <h2>🚀 Current Project</h2>
-        <div class="resume-item" style="border: none;">
-            <h3>Panama Metro Line 3 Project</h3>
-            <span>2021 - Present | Panama City, Panama</span>
-            <p>
-                <b>Role:</b> Power of Attorney (PoA) & Senior Civil Engineer<br>
-                <b>Overview:</b> A landmark Design-Build project constructing a 25km monorail system crossing the Panama Canal. 
-                Features complex tunneling techniques and elevated structures essential for national transportation infrastructure.
-            </p>
-            <ul>
-                <li>Overseeing technical management and strategic decision-making for the project.</li>
-                <li>Managing key negotiations and contracts with government entities and clients.</li>
-                <li>Providing technical advisory for tunnel excavation and structural engineering.</li>
-            </ul>
-        </div>
-    </section>
+    <div class="container">
+        <div class="grid">
+            <a href="about.html" class="card">
+                <span class="icon">👨‍💼</span>
+                <h3>About Me</h3>
+                <p>20년 경력의 철도 엔지니어 김도한의<br>주요 이력과 전문성을 소개합니다.</p>
+            </a>
 
-    <section>
-        <h2>Key Project History</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <h3>High-Speed Rail Expansion (Korea)</h3>
-                <span>2015 - 2020 | Project Manager</span>
-                <p>Led the expansion of a major high-speed railway line. Managed soft ground treatment and advanced tunneling operations.</p>
+            <div class="card" onclick="alert('준비 중인 페이지입니다.')">
+                <span class="icon">🏗️</span>
+                <h3>Major Projects</h3>
+                <p>파나마 메트로 3호선 및 국내외<br>주요 철도/인프라 수행 실적</p>
             </div>
-            <div class="project-card">
-                <h3>Overseas Bridge & Road Construction</h3>
-                <span>2010 - 2015 | Senior Engineer</span>
-                <p>Directed a large-scale infrastructure project abroad. Coordinated with multinational teams to ensure on-time delivery.</p>
+
+            <div class="card" onclick="alert('준비 중인 페이지입니다.')">
+                <span class="icon">📜</span>
+                <h3>Int'l Contracts</h3>
+                <p>FIDIC 기반 계약 관리 및<br>클레임/분쟁 해결 사례 분석</p>
             </div>
-            <div class="project-card">
-                <h3>Urban Subway Extension</h3>
-                <span>2005 - 2010 | Site Engineer</span>
-                <p>Supervised construction of an urban subway extension, focusing on Shield TBM application and safety management.</p>
+
+            <div class="card" onclick="alert('준비 중인 페이지입니다.')">
+                <span class="icon">💰</span>
+                <h3>Estimation & Cost</h3>
+                <p>글로벌 프로젝트 견적 산출 및<br>공사비 최적화(VE) 전략</p>
+            </div>
+
+            <div class="card" onclick="alert('준비 중인 페이지입니다.')">
+                <span class="icon">⚠️</span>
+                <h3>Risk Management</h3>
+                <p>대형 프로젝트 리스크 식별 및<br>정량적 분석/대응 방안</p>
+            </div>
+
+            <div class="card" onclick="alert('준비 중인 페이지입니다.')">
+                <span class="icon">🇺🇸</span>
+                <h3>US Railway Market</h3>
+                <p>미국 철도 시장 동향 분석 및<br>진출 전략 리포트</p>
             </div>
         </div>
-    </section>
-
-    <section>
-        <h2>Education</h2>
-        <div class="resume-item">
-            <h3>Chung-Ang University (Seoul, Korea)</h3>
-            <span>Bachelor of Science in Civil Engineering</span>
-        </div>
-    </section>
+    </div>
 
     <footer>
-        <h3>Let's Build the Future Together</h3>
-        <p>Open to technical advisory roles and collaboration opportunities in railway infrastructure.</p>
-        <a href="mailto:jakekim77385@gmail.com" class="contact-btn">Email Me</a>
-        <br><br>
-        <small>&copy; 2026 Dohan Kim. All rights reserved.</small>
+        &copy; 2026 Dohan Kim. All rights reserved.
     </footer>
 
 </body>
