@@ -3,70 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me | Dohan Kim</title>
+    <title>About | Dohan Kim</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* 1. 공통 스타일 */
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; line-height: 1.6; color: #333; background-color: #f9f9f9; }
+        :root { --primary: #0a192f; --light-navy: #112240; --secondary: #64ffda; --text: #8892b0; --white: #e6f1ff; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--primary); color: var(--text); margin: 0; line-height: 1.6; }
         
-        /* 2. 메뉴바 추가 (여기서 Home 버튼이 생김) */
-        nav { background-color: #003366; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo a { color: white; text-decoration: none; font-weight: bold; font-size: 1.2em; }
-        .menu a { color: #ddd; text-decoration: none; margin-left: 20px; font-size: 0.9em; }
-        .menu a:hover { color: white; }
+        /* Layout */
+        .container { max-width: 900px; margin: 0 auto; padding: 100px 20px; }
+        
+        /* Header */
+        nav { padding: 20px; position: fixed; width: 100%; background: rgba(10,25,47,0.95); top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; }
+        .back-btn { color: var(--secondary); text-decoration: none; font-weight: bold; margin-left: 20px; }
+        
+        h1 { color: var(--white); font-size: 2.5rem; margin-bottom: 10px; }
+        h2 { color: var(--white); display: flex; align-items: center; margin-top: 50px; font-size: 1.5rem; }
+        h2::after { content: ""; display: block; width: 200px; height: 1px; background: #233554; margin-left: 20px; }
 
-        /* 기존 스타일 유지 */
-        header { background: #003366; color: white; padding: 60px 20px; text-align: center; } /* 헤더 높이 조정 */
-        header h1 { margin: 0; font-size: 2.5em; }
-        section { padding: 40px 20px; max-width: 900px; margin: 20px auto; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-radius: 8px; }
-        h2 { color: #003366; border-bottom: 2px solid #003366; padding-bottom: 10px; margin-bottom: 20px; }
-        .resume-item { margin-bottom: 25px; padding-left: 20px; border-left: 4px solid #003366; }
-        .resume-item span { color: #666; font-size: 0.9em; display: block; margin-bottom: 5px; }
-        .badge { background-color: #003366; color: white; padding: 3px 8px; font-size: 0.8em; border-radius: 3px; margin-right: 5px; }
-        footer { text-align: center; padding: 30px; background: #333; color: white; }
+        /* Skills Tags */
+        .skills { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; }
+        .skill-tag { border: 1px solid var(--secondary); color: var(--secondary); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; }
+
+        /* Timeline Style for Career */
+        .timeline { position: relative; margin-top: 40px; padding-left: 30px; border-left: 2px solid #233554; }
+        .job { position: relative; margin-bottom: 40px; }
+        .job::before { content: "●"; position: absolute; left: -36px; top: 0; color: var(--secondary); font-size: 1.2rem; }
+        .job h3 { color: var(--white); margin: 0 0 5px 0; font-size: 1.3rem; }
+        .job .company { color: var(--secondary); font-weight: bold; font-size: 1rem; }
+        .job .date { font-size: 0.85rem; font-family: monospace; margin-bottom: 15px; display: block; }
+        .job ul { padding-left: 20px; }
+        .job li { margin-bottom: 10px; }
+
+        footer { text-align: center; margin-top: 50px; padding-bottom: 30px; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo"><a href="index.html">DOHAN KIM</a></div> <div class="menu">
-            <a href="index.html">Home</a>
-            <a href="about.html" style="color:white; border-bottom:1px solid white;">About Me</a>
-        </div>
+        <a href="index.html" class="back-btn">← Back to Home</a>
     </nav>
 
-    <header>
-        <h1>About Me</h1>
-        <p>Civil Engineer | Railway & Infrastructure Specialist</p>
-    </header>
+    <div class="container">
+        <header>
+            <h1>About Dohan Kim</h1>
+            <p style="color: var(--secondary); font-size: 1.2rem;">Civil Engineer | Railway Specialist | Problem Solver</p>
+            <p>
+                A highly accomplished Civil Engineer with 20+ years of experience in managing large-scale railway and infrastructure projects globally. 
+                Currently creating history in Panama with the Metro Line 3 project.
+            </p>
+            
+            <div class="skills">
+                <span class="skill-tag">Project Management (EPC)</span>
+                <span class="skill-tag">Railway Engineering</span>
+                <span class="skill-tag">FIDIC Contracts</span>
+                <span class="skill-tag">Risk Analysis</span>
+                <span class="skill-tag">Global Leadership</span>
+            </div>
+        </header>
 
-    <section>
-        <h2>Professional Summary</h2>
-        <p>Highly experienced Civil Engineer with over 20 years of expertise in railway infrastructure. Currently serving as PoA for Panama Metro Line 3.</p>
-    </section>
+        <section>
+            <h2><i class="fas fa-briefcase" style="margin-right:15px; color:var(--secondary)"></i> Professional Experience</h2>
+            
+            <div class="timeline">
+                <div class="job">
+                    <h3>Power of Attorney (PoA) & Senior Manager</h3>
+                    <span class="company">Hyundai Engineering @ Panama</span>
+                    <span class="date">2021 - Present</span>
+                    <p>Leading the Panama Metro Line 3 Project, a 25km monorail system crossing the Panama Canal.</p>
+                    <ul>
+                        <li>Exercising full legal authority (PoA) for project execution and stakeholder management.</li>
+                        <li>Overseeing technical complexitie involving tunnelling and elevated structures.</li>
+                        <li>Managing multi-national teams and ensuring compliance with FIDIC contract terms.</li>
+                    </ul>
+                </div>
 
-    <section>
-        <h2>Technical Expertise</h2>
-        <div>
-            <span class="badge">Railway Engineering</span>
-            <span class="badge">EPC Project Management</span>
-            <span class="badge">FIDIC Contracts</span>
-            <span class="badge">Risk Management</span>
-        </div>
-    </section>
+                <div class="job">
+                    <h3>Project Manager / Senior Engineer</h3>
+                    <span class="company">Railway Division @ Korea & Overseas</span>
+                    <span class="date">2010 - 2020</span>
+                    <ul>
+                        <li>Managed high-speed rail expansion projects focusing on soft-ground treatment.</li>
+                        <li>Led bidding teams for overseas infrastructure projects, securing key contracts.</li>
+                        <li>Implemented cost-saving VE (Value Engineering) strategies.</li>
+                    </ul>
+                </div>
 
-    <section>
-        <h2>Current Project</h2>
-        <div class="resume-item">
-            <h3>Panama Metro Line 3 Project</h3>
-            <span>2021 - Present | Panama City</span>
-            <p><b>Role:</b> Power of Attorney (PoA) & Senior Civil Engineer</p>
-            <p>Leading the 25km monorail system construction crossing the Panama Canal.</p>
-        </div>
-    </section>
+                <div class="job">
+                    <h3>Site Engineer</h3>
+                    <span class="company">Infrastructure Projects</span>
+                    <span class="date">2005 - 2010</span>
+                    <ul>
+                        <li>Supervised on-site construction of urban subway extensions.</li>
+                        <li>Specialized in Shield TBM methodology and safety management.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-    <footer>
-        <small>&copy; 2026 Dohan Kim</small>
-    </footer>
+        <section>
+            <h2><i class="fas fa-graduation-cap" style="margin-right:15px; color:var(--secondary)"></i> Education</h2>
+            <div class="job" style="margin-bottom:0;">
+                <h3>Bachelor of Science in Civil Engineering</h3>
+                <span class="company">Chung-Ang University, South Korea</span>
+                <span class="date">Graduated</span>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2026 Dohan Kim.
+        </footer>
+    </div>
 
 </body>
 </html>
