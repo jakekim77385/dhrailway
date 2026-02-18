@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panama Metro Line 3 | Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Pro Theme: Dark Navy & Gold */
+        :root { --primary: #0a192f; --light-navy: #112240; --secondary: #64ffda; --white: #e6f1ff; --text: #8892b0; --gold: #ffd700; --danger: #ff5f57; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--primary); color: var(--text); margin: 0; line-height: 1.6; }
+        
+        nav { padding: 20px 40px; position: fixed; width: 100%; background: rgba(10,25,47,0.95); top: 0; z-index: 100; display: flex; justify-content: space-between; border-bottom: 1px solid #233554; backdrop-filter: blur(10px); }
+        .back-btn { color: var(--secondary); text-decoration: none; font-weight: bold; border: 1px solid var(--secondary); padding: 5px 15px; border-radius: 4px; transition: 0.3s; }
+        .back-btn:hover { background: rgba(100, 255, 218, 0.1); }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 120px 20px; }
+        h1 { color: var(--white); font-size: 2.5rem; margin-bottom: 10px; }
+        .subtitle { color: var(--secondary); margin-bottom: 50px; font-size: 1.1rem; }
+
+        /* 4개 폴더 그리드 */
+        .folder-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 60px; }
+        
+        .folder-card { 
+            background-color: var(--light-navy); 
+            padding: 30px; 
+            border-radius: 12px; 
+            border-top: 5px solid var(--secondary);
+            transition: 0.3s; 
+            cursor: pointer;
+            position: relative;
+        }
+        .folder-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .folder-card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 15px; display: block; }
+        .folder-card h3 { color: var(--white); font-size: 1.3rem; margin: 0 0 10px 0; }
+        .folder-card p { font-size: 0.9rem; }
+        
+        /* 공사현황 전용 스타일 (파일 업로드) */
+        .upload-section { 
+            background: rgba(17, 34, 64, 0.5); 
+            border: 2px dashed #233554; 
+            padding: 40px; 
+            text-align: center; 
+            border-radius: 10px; 
+            margin-top: 20px;
+            display: none; /* 클릭하면 보이게 */
+        }
+        .upload-section.active { display: block; animation: fadeIn 0.5s; }
+        
+        .file-input-wrapper { margin-top: 20px; }
+        .custom-file-upload {
+            border: 1px solid var(--secondary);
+            display: inline-block;
+            padding: 10px 20px;
+            cursor: pointer;
+            color: var(--secondary);
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .custom-file-upload:hover { background: rgba(100, 255, 218, 0.1); }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        footer { margin-top: 100px; text-align: center; font-size: 0.8rem; border-top: 1px solid #233554; padding-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div style="color:white; font-weight:bold;">PANAMA METRO L3</div>
+        <a href="projects.html" class="back-btn">← Back to Projects</a>
+    </nav>
+
+    <div class="container">
+        <h1>Project Dashboard</h1>
+        <p class="subtitle">Managing Engineering, Construction, and Systems Interface.</p>
+
+        <div class="folder-grid">
+            
+            <div class="folder-card" onclick="toggleSection('construction-panel')">
+                <i class="fas fa-hard-hat"></i>
+                <h3>Construction Status</h3>
+                <p>Daily Reports, Progress Photos, Site Logs</p>
+            </div>
+
+            <div class="folder-card" onclick="alert('System Interface Database: Coming Soon')">
+                <i class="fas fa-network-wired"></i>
+                <h3>System Interface</h3>
+                <p>Civil-E&M Interface, signaling integration</p>
+            </div>
+
+            <div class="folder-card" onclick="alert('RAMS Analysis Data: Coming Soon')">
+                <i class="fas fa-shield-alt"></i>
+                <h3>RAMS</h3>
+                <p>Reliability, Availability, Maintainability, Safety</p>
+            </div>
+
+            <div class="folder-card" onclick="alert('Commissioning Schedule: Coming Soon')">
+                <i class="fas fa-tachometer-alt"></i>
+                <h3>Commissioning</h3>
+                <p>Test run logs, Performance checks</p>
+            </div>
+        </div>
+
+        <div id="construction-panel" class="upload-section">
+            <h2 style="color: var(--white);"><i class="fas fa-cloud-upload-alt"></i> Upload Site Documents</h2>
+            <p>Upload daily construction logs or site photos here.</p>
+            
+            <div class="file-input-wrapper">
+                <label for="file-upload" class="custom-file-upload">
+                    <i class="fas fa-folder-open"></i> Select File
+                </label>
+                <input id="file-upload" type="file" style="display:none;" onchange="fileSelected()"/>
+                <p id="file-name" style="margin-top:10px; color: var(--secondary);"></p>
+                
+                <br><br>
+                <button onclick="uploadAction()" style="background:var(--secondary); color:#0a192f; border:none; padding:10px 30px; font-weight:bold; border-radius:5px; cursor:pointer;">Upload Now</button>
+            </div>
+            
+            <p style="font-size: 0.8rem; margin-top: 20px; color: #888;">
+                * Note: Files are managed via secure cloud storage linkage.
+            </p>
+        </div>
+
+    </div>
+
+    <footer>&copy; 2026 Panama Metro Line 3 Project Team</footer>
+
+    <script>
+        function toggleSection(id) {
+            const section = document.getElementById(id);
+            if (section.style.display === 'block') {
+                section.style.display = 'none';
+            } else {
+                section.style.display = 'block';
+                // 화면 스크롤 부드럽게 이동
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function fileSelected() {
+            const input = document.getElementById('file-upload');
+            const fileName = document.getElementById('file-name');
+            if(input.files.length > 0) {
+                fileName.innerText = "Selected: " + input.files[0].name;
+            }
+        }
+
+        function uploadAction() {
+            // 실제 서버가 없으므로 안내 메시지 출력
+            alert("This is a demo interface.\n\nSince GitHub Pages is static, please link this button to your Google Drive or Dropbox folder for actual file storage.");
+            // 실제 사용시에는 여기에 window.open('구글드라이브주소') 등을 넣습니다.
+        }
+    </script>
+
+</body>
+</html>
