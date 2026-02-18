@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Major Projects | Dohan Kim</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* 1. Global Theme (Dark Navy & Gold/Mint) */
+        :root { --primary: #0a192f; --light-navy: #112240; --secondary: #64ffda; --white: #e6f1ff; --text: #8892b0; --gold: #ffd700; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--primary); color: var(--text); margin: 0; line-height: 1.6; }
+        
+        /* 2. Navigation */
+        nav { padding: 20px 40px; position: fixed; width: 100%; background: rgba(10,25,47,0.95); top: 0; z-index: 100; display: flex; justify-content: space-between; border-bottom: 1px solid #233554; backdrop-filter: blur(10px); }
+        .logo { color: var(--white); font-weight: bold; letter-spacing: 1px; }
+        .back-btn { color: var(--secondary); text-decoration: none; font-weight: bold; font-size: 0.9rem; border: 1px solid var(--secondary); padding: 5px 15px; border-radius: 4px; transition: 0.3s; }
+        .back-btn:hover { background: rgba(100, 255, 218, 0.1); }
+
+        /* 3. Layout */
+        .container { max-width: 1100px; margin: 0 auto; padding: 120px 20px; text-align: center; }
+        h1 { color: var(--white); font-size: 2.5rem; margin-bottom: 10px; }
+        .subtitle { color: var(--secondary); margin-bottom: 60px; font-size: 1.1rem; }
+
+        /* 4. Project Grid (Cards) */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        
+        .card { 
+            background-color: var(--light-navy); 
+            padding: 40px 30px; 
+            border-radius: 8px; 
+            box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+            transition: transform 0.3s ease, border 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+        }
+        .card:hover { transform: translateY(-10px); border-color: var(--secondary); }
+        .card i { font-size: 3rem; color: var(--secondary); margin-bottom: 25px; display: block; }
+        .card h3 { color: var(--white); font-size: 1.4rem; margin: 0 0 10px 0; }
+        .card p { font-size: 0.9rem; margin-bottom: 20px; }
+        .card .btn-text { color: var(--secondary); font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* 5. Modal Popup Styles (Hidden by default) */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 12, 27, 0.9); z-index: 1000;
+            display: none; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal-content {
+            background: var(--light-navy); padding: 50px; border-radius: 10px;
+            max-width: 600px; width: 90%; position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transform: translateY(20px); transition: transform 0.3s ease;
+            text-align: left; border: 1px solid #233554;
+        }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+
+        .close-btn { position: absolute; top: 20px; right: 25px; color: var(--text); font-size: 1.5rem; cursor: pointer; transition: 0.3s; }
+        .close-btn:hover { color: var(--secondary); }
+
+        .modal-title { color: var(--white); font-size: 1.8rem; margin-bottom: 5px; }
+        .modal-subtitle { color: var(--secondary); font-size: 1rem; margin-bottom: 30px; display: block; }
+        .modal-body ul { padding-left: 20px; color: var(--text); }
+        .modal-body li { margin-bottom: 10px; }
+
+        footer { margin-top: 100px; color: #555; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">DOHAN KIM</div>
+        <a href="index.html" class="back-btn">← Back to Home</a>
+    </nav>
+
+    <div class="container">
+        <h1>Selected Major Projects</h1>
+        <p class="subtitle">Click on a project to view technical details.</p>
+
+        <div class="project-grid">
+            
+            <div class="card" onclick="openModal('modal-panama')">
+                <i class="fas fa-train-subway"></i>
+                <h3>Panama Metro Line 3</h3>
+                <p>The largest monorail project in the Americas, crossing the Panama Canal.</p>
+                <span class="btn-text">View Details <i class="fas fa-arrow-right"></i></span>
+            </div>
+
+            <div class="card" onclick="openModal('modal-honam')">
+                <i class="fas fa-bolt"></i>
+                <h3>Honam High-Speed Rail</h3>
+                <p>Core infrastructure connecting Osong to Gwangju (300km/h).</p>
+                <span class="btn-text">View Details <i class="fas fa-arrow-right"></i></span>
+            </div>
+
+            <div class="card" onclick="openModal('modal-bimodal')">
+                <i class="fas fa-bus-alt"></i> <h3>Bimodal Tram (GRT)</h3>
+                <p>New transportation system combining benefits of bus and train.</p>
+                <span class="btn-text">View Details <i class="fas fa-arrow-right"></i></span>
+            </div>
+
+            <div class="card" onclick="openModal('modal-donghae')">
+                <i class="fas fa-road"></i>
+                <h3>Donghae Line</h3>
+                <p>National railway network expansion (Detailed Design).</p>
+                <span class="btn-text">View Details <i class="fas fa-arrow-right"></i></span>
+            </div>
+
+        </div>
+        <footer>&copy; 2026 Dohan Kim. All rights reserved.</footer>
+    </div>
+
+    <div id="modal-panama" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-panama')">&times;</span>
+            <h2 class="modal-title">Panama Metro Line 3</h2>
+            <span class="modal-subtitle">2021 - Present | Role: Power of Attorney (PoA)</span>
+            <div class="modal-body">
+                <p>Overseeing the EPC (Engineering, Procurement, Construction) of a 25km monorail system with 14 stations. This project includes a 5.3km tunnel under the Panama Canal.</p>
+                <ul>
+                    <li><strong>Key Role:</strong> Project Executive & Legal Representative (PoA).</li>
+                    <li><strong>Challenge:</strong> Managing complex interface between tunnel and viaduct sections.</li>
+                    <li><strong>Scale:</strong> $2.8 Billion USD (Largest infrastructure project in Panama).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-honam" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-honam')">&times;</span>
+            <h2 class="modal-title">Honam High-Speed Rail</h2>
+            <span class="modal-subtitle">2015 - 2020 | Role: Project Manager (PM)</span>
+            <div class="modal-body">
+                <p>Construction of the high-speed railway trackbed for the Honam line, enabling speeds up to 300km/h.</p>
+                <ul>
+                    <li><strong>Responsibility:</strong> Site management and process control for Lot 4.</li>
+                    <li><strong>Technical:</strong> Applied advanced NATM tunneling methods and soft-ground treatment.</li>
+                    <li><strong>Outcome:</strong> Successful completion on schedule with zero safety incidents.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-bimodal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-bimodal')">&times;</span>
+            <h2 class="modal-title">Bimodal Tram System</h2>
+            <span class="modal-subtitle">Innovative Urban Transit | Role: Design Engineer</span>
+            <div class="modal-body">
+                <p>Participated in the engineering and design phase for the Bimodal Tram (GRT) and Urban Maglev systems.</p>
+                <ul>
+                    <li><strong>Technology:</strong> Automated guidance system (magnetic markers).</li>
+                    <li><strong>Feasibility:</strong> Conducted route analysis and infrastructure compatibility studies.</li>
+                    <li><strong>Impact:</strong> Contributed to the commercialization of future eco-friendly transit.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-donghae" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-donghae')">&times;</span>
+            <h2 class="modal-title">Donghae Line (National Rail)</h2>
+            <span class="modal-subtitle">2006 | Role: Detailed Design Engineer</span>
+            <div class="modal-body">
+                <p>Executed the Detailed Design for the Wondeok-Imwon section (Lot 15) of the Donghae Line.</p>
+                <ul>
+                    <li><strong>Scope:</strong> Earthwork, drainage, and structural design for single-track railway.</li>
+                    <li><strong>Focus:</strong> Optimized alignment to minimize environmental impact.</li>
+                    <li><strong>Result:</strong> Delivered precise design drawings approved by Korea Rail Network Authority.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
